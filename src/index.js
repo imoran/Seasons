@@ -13,13 +13,21 @@ class App extends React.Component {
         );
     }
 
-    render() {
+    renderContent() {
         if (!this.state.errorMessage && this.state.lat) {
             return <h1><SeasonDisplay lat={this.state.lat} /></h1>
         } else if (this.state.errorMessage && !this.state.let) {
             return <h1>{`Error: ${this.state.errorMessage}`}</h1>
         }
-        return <Loader text="Waiting for your permission to access location..." />
+        return <Loader text="Waiting for your permission to access location..."/>
+    }
+
+    render() {
+        return (
+            <div>
+                {this.renderContent()}
+            </div>
+        );
     }
 }
 
